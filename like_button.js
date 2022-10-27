@@ -1,7 +1,5 @@
 'use strict';
 
-const e = React.createElement;
-
 class LikeButton extends React.Component {
   constructor(props) {
     super(props);
@@ -13,10 +11,10 @@ class LikeButton extends React.Component {
       return 'You liked this.';
     }
 
-    return e(
-      'button',
-      { onClick: () => this.setState({ liked: true }) },
-      'Like'
+    return (
+      <button onClick={() => this.setState({ liked: true }) }>
+        Like
+      </button>
     );
   }
 }
@@ -32,10 +30,10 @@ class DislikeButton extends React.Component {
       return 'You disliked this.';
     }
 
-    return e(
-      'button',
-      { onClick: () => this.setState({ disliked: true }) },
-      'Dislike'
+    return (
+      <button onClick = {() => this.setState({ disliked: true }) }>
+        Dislike
+      </button>
     );
   }
 }
@@ -51,21 +49,28 @@ class CommentInput extends React.Component {
       return 'You commented on this.';
     }
 
-    return e(
-      'input',
-      { placeholder: "comment" }
+    console.log(this)
+    return (
+      <React.Fragment>
+        <input placeholder = "comment"></input>
+        <button onClick = {() => this.setState({ commented: true }) }>
+          comment
+        </button>
+      </React.Fragment>
     );
   }
 }
 
-const domContainer = document.querySelector('#like_button_container');
-const root = ReactDOM.createRoot(domContainer);
-root.render(e(LikeButton));
+const e = React.createElement;
 
-const domContainer1 = document.querySelector('#dislike_button_container');
-const root1 = ReactDOM.createRoot(domContainer1);
-root1.render(e(DislikeButton));
+const domContainerLikeButton = document.querySelector('#like_button_container');
+const rootLikeButton = ReactDOM.createRoot(domContainerLikeButton);
+rootLikeButton.render(e(LikeButton));
 
-const domContainer2 = document.querySelector('#comment_input_container');
-const root2 = ReactDOM.createRoot(domContainer2);
-root2.render(e(CommentInput));
+const domContainerDislikeButton = document.querySelector('#dislike_button_container');
+const rootDislikeButton = ReactDOM.createRoot(domContainerDislikeButton);
+rootDislikeButton.render(e(DislikeButton));
+
+const domContainerCommentInput = document.querySelector('#comment_input_container');
+const rootCommentInput = ReactDOM.createRoot(domContainerCommentInput);
+rootCommentInput.render(e(CommentInput));
