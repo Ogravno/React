@@ -40,6 +40,24 @@ class DislikeButton extends React.Component {
   }
 }
 
+class CommentInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { commented: false };
+  }
+
+  render() {
+    if (this.state.commented) {
+      return 'You commented on this.';
+    }
+
+    return e(
+      'input',
+      { placeholder: "comment" }
+    );
+  }
+}
+
 const domContainer = document.querySelector('#like_button_container');
 const root = ReactDOM.createRoot(domContainer);
 root.render(e(LikeButton));
@@ -47,3 +65,7 @@ root.render(e(LikeButton));
 const domContainer1 = document.querySelector('#dislike_button_container');
 const root1 = ReactDOM.createRoot(domContainer1);
 root1.render(e(DislikeButton));
+
+const domContainer2 = document.querySelector('#comment_input_container');
+const root2 = ReactDOM.createRoot(domContainer2);
+root2.render(e(CommentInput));
